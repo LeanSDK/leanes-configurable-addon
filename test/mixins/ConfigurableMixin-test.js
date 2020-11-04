@@ -1,7 +1,8 @@
 const { expect, assert } = require('chai');
 const sinon = require('sinon');
 const _ = require('lodash');
-const LeanES = require("../../../src/leanes/index.js").default;
+const ConfigurableAddon = ("../../../src/index.js").default;
+const LeanES = require('leanes').default;
 const {
   initialize, partOf, nameBy, meta, method, property, mixin, attribute, constant
 } = LeanES.NS;
@@ -13,6 +14,7 @@ describe('ConfigurableMixin', () => {
       const facade = LeanES.NS.Facade.getInstance(KEY);
 
       @initialize
+      @mixin(ConfigurableAddon)
       class Test extends LeanES {
         @nameBy static  __filename = 'Test';
         @meta static object = {};

@@ -1,5 +1,6 @@
 const { expect, assert } = require('chai');
-const LeanES = require("../../../src/leanes/index.js").default;
+const ConfigurableAddon = ("../../../src/index.js").default;
+const LeanES = require('leanes').default;
 const {
   initialize, partOf, nameBy, meta, constant
 } = LeanES.NS;
@@ -8,6 +9,7 @@ describe('Configuration', () => {
   describe('environment', () => {
     it('should get environment name', () => {
       @initialize
+      @mixin(ConfigurableAddon)
       class Test extends LeanES {
         @nameBy static  __filename = 'Test';
         @meta static object = {};
@@ -32,6 +34,7 @@ describe('Configuration', () => {
   describe('defineConfigProperties', () => {
     it('should setup configuration instance', () => {
       @initialize
+      @mixin(ConfigurableAddon)
       class Test extends LeanES {
         @nameBy static  __filename = 'Test';
         @meta static object = {};
@@ -57,6 +60,7 @@ describe('Configuration', () => {
   describe('onRegister', () => {
     it('should initiate setup configuration instance', () => {
       @initialize
+      @mixin(ConfigurableAddon)
       class Test extends LeanES {
         @nameBy static  __filename = 'Test';
         @meta static object = {};
