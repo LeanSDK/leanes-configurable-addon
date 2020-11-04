@@ -16,7 +16,7 @@
 import type { ConfigurationInterface } from '../interfaces/ConfigurationInterface';
 import type { ConfigurableInterface } from '../interfaces/ConfigurableInterface';
 
-import { inject } from "inversify";
+import { inject } from 'inversify';
 
 export default (Module) => {
   const {
