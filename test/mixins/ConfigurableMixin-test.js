@@ -4,7 +4,7 @@ const _ = require('lodash');
 const ConfigurableAddon = ("../../../src/index.js").default;
 const LeanES = require('leanes/src/leanes').default;
 const {
-  initialize, partOf, nameBy, meta, method, property, mixin, plugin, attribute, constant
+  initialize, partOf, nameBy, meta, method, property, mixin, plugin, attribute, constant, plugin
 } = LeanES.NS;
 
 describe('ConfigurableMixin', () => {
