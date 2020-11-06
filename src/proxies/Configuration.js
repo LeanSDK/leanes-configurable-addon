@@ -34,7 +34,7 @@ export default (Module) => {
     @meta static object = {};
 
     @property get root(): string {
-      return this.getData();
+      return this.getData() || '.';
     }
 
     @property get environment(): string {

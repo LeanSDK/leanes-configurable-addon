@@ -1,6 +1,6 @@
 const { expect, assert } = require('chai');
-const ConfigurableAddon = ("../../../src/index.js").default;
-const LeanES = require('leanes/src/leanes').default;
+const ConfigurableAddon = require("../../src/index.js").default;
+const LeanES = require('@leansdk/leanes/src/leanes').default;
 const {
   initialize, partOf, nameBy, meta, constant, mixin, plugin
 } = LeanES.NS;
@@ -16,12 +16,12 @@ describe('Configuration', () => {
         @constant ROOT = `${__dirname}/config/`;
       }
 
-      @initialize
-      @partOf(Test)
-      class Configuration extends LeanES.NS.Configuration {
-        @nameBy static  __filename = 'Configuration';
-        @meta static object = {};
-      }
+      // @initialize
+      // @partOf(Test)
+      // class Configuration extends LeanES.NS.Configuration {
+      //   @nameBy static  __filename = 'Configuration';
+      //   @meta static object = {};
+      // }
 
       const configuration = Test.NS.Configuration.new();
       configuration.setName(LeanES.NS.CONFIGURATION);
@@ -41,12 +41,12 @@ describe('Configuration', () => {
         @constant ROOT = `${__dirname}/config`;
       }
 
-      @initialize
-      @partOf(Test)
-      class Configuration extends LeanES.NS.Configuration {
-        @nameBy static  __filename = 'Configuration';
-        @meta static object = {};
-      }
+      // @initialize
+      // @partOf(Test)
+      // class Configuration extends LeanES.NS.Configuration {
+      //   @nameBy static  __filename = 'Configuration';
+      //   @meta static object = {};
+      // }
       const configuration = Test.NS.Configuration.new();
       configuration.setName(LeanES.NS.CONFIGURATION);
       configuration.setData(Test.NS.ROOT);
@@ -67,12 +67,12 @@ describe('Configuration', () => {
         @constant ROOT = `${__dirname}/config`;
       }
 
-      @initialize
-      @partOf(Test)
-      class Configuration extends LeanES.NS.Configuration {
-        @nameBy static  __filename = 'Configuration';
-        @meta static object = {};
-      }
+      // @initialize
+      // @partOf(Test)
+      // class Configuration extends LeanES.NS.Configuration {
+      //   @nameBy static  __filename = 'Configuration';
+      //   @meta static object = {};
+      // }
       const configuration = Test.NS.Configuration.new();
       configuration.setName(LeanES.NS.CONFIGURATION);
       configuration.setData(Test.NS.ROOT);

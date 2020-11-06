@@ -18,10 +18,11 @@ export type { ConfigurableInterface } from './interfaces/ConfigurableInterface';
 
 export default (Module) => {
   const {
+    Module: BaseModule,
     initializeMixin, meta, constant, method, patch
   } = Module.NS;
 
-  return ['ConfigurableAddon', (BaseClass: Class<Module.NS.Module>) => {
+  return ['ConfigurableAddon', (BaseClass: Class<BaseModule>) => {
     @initializeMixin
     class Mixin extends BaseClass {
       @meta static object = {};
@@ -29,7 +30,7 @@ export default (Module) => {
       @constant CONFIGURATION =  'ConfigurationProxy';
 
       @method static including() {
-        patch(this.NS.Facade, this.NS.FacadePatch);
+        patch(this.NS.FacadePatch)(this.NS.Facade);
       }
     }
     require('./proxies/Configuration').default(Mixin);

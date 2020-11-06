@@ -13,8 +13,6 @@
 // You should have received a copy of the GNU Lesser General Public License
 // along with leanes-configurable-addon.  If not, see <https://www.gnu.org/licenses/>.
 
-import type { ConfigurationInterface } from './ConfigurationInterface';
-
 export interface ConfigurableInterface {
-  configs: ConfigurationInterface;
+  _configurableInterface: 'ConfigurableInterface';
 }

@@ -1,17 +1,17 @@
 const { expect, assert } = require('chai');
 const sinon = require('sinon');
 const _ = require('lodash');
-const ConfigurableAddon = ("../../../src/index.js").default;
-const LeanES = require('leanes/src/leanes').default;
+const ConfigurableAddon = require("../../src/index.js").default;
+const LeanES = require('@leansdk/leanes/src/leanes').default;
 const {
-  initialize, partOf, nameBy, meta, method, property, mixin, plugin, attribute, constant, plugin
+  initialize, partOf, nameBy, meta, method, property, mixin, plugin, attribute, constant
 } = LeanES.NS;
 
 describe('ConfigurableMixin', () => {
    describe('configs', () => {
      it('should create configuration instance', () => {
+
       const KEY = 'TEST_CONFIG_MIXIN_001';
-      const facade = LeanES.NS.Facade.getInstance(KEY);
 
       @initialize
       @plugin(ConfigurableAddon)
@@ -23,24 +23,22 @@ describe('ConfigurableMixin', () => {
 
       @initialize
       @partOf(Test)
-      class TestConfiguration extends LeanES.NS.Configuration {
-        @nameBy static  __filename = 'TestConfiguration';
+      class ApplicationFacade extends LeanES.NS.Facade {
+        @nameBy static  __filename = 'ApplicationFacade';
         @meta static object = {};
       }
-      const configuration = Test.NS.Configuration.new();
-      configuration.setName(LeanES.NS.CONFIGURATION);
-      configuration.setData(Test.NS.ROOT);
-      facade.registerProxy(configuration);
+
+      const facade = ApplicationFacade.getInstance(KEY);
 
       @initialize
-      @mixin(LeanES.NS.ConfigurableMixin)
       @partOf(Test)
+      @mixin(Test.NS.ConfigurableMixin)
       class TestConfigurable extends LeanES.NS.Proxy {
         @nameBy static  __filename = 'TestConfigurable';
         @meta static object = {};
       }
-      const object = TestConfigurable.new('TEST');
-      facade.registerProxy(object);
+      facade.addProxy('TestConfigurable');
+      const object = facade.getProxy('TestConfigurable');
       const configs = object.configs;
       assert.deepPropertyVal(configs, 'test1', 'default');
       assert.deepPropertyVal(configs, 'test2', 42);

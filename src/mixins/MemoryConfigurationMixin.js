@@ -29,7 +29,7 @@ export default (Module) => {
       @meta static object = {};
 
       @property get root(): string {
-        return this.Module.prototype.ROOT;
+        return this.Module.prototype.ROOT || '.';
       }
 
       @method defineConfigProperties() {

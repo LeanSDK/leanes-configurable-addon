@@ -1,8 +1,8 @@
 const chai = require("chai");
 const expect = chai.expect;
 const assert = chai.assert;
-const ConfigurableAddon = ("../../../src/index.js").default;
-const LeanES = require('leanes/src/leanes').default;
+const ConfigurableAddon = require("../../src/index.js").default;
+const LeanES = require('@leansdk/leanes/src/leanes').default;
 const {
   initialize, partOf, nameBy, resolver, meta, attribute, mixin, constant, plugin
 } = LeanES.NS;
@@ -19,9 +19,9 @@ describe('MemoryConfigurationMixin', () => {
        }
 
        @initialize
-       @mixin(LeanES.NS.MemoryConfigurationMixin)
        @partOf(Test)
-       class TestConfiguration extends LeanES.NS.Proxy {
+       @mixin(Test.NS.MemoryConfigurationMixin)
+       class TestConfiguration extends Test.NS.Configuration {
          @nameBy static  __filename = 'TestConfiguration';
          @meta static object = {};
        }

@@ -22,7 +22,7 @@ export default (Module) => {
   const {
     CONFIGURATION,
     CoreObject,
-    initializeMixin, meta, property
+    initializeMixin, meta, property,
   } = Module.NS;
 
   Module.defineMixin(__filename, (BaseClass: Class<CoreObject>) => {
@@ -30,17 +30,13 @@ export default (Module) => {
     class Mixin extends BaseClass implements ConfigurableInterface {
       @meta static object = {};
 
-      @property _configs: ConfigurationInterface = null;
+      @property _configurableInterface = 'ConfigurableInterface'
+
+      @inject(`Factory<${CONFIGURATION}>`)
+      @property _configurationFactory: () => ConfigurationInterface;
 
       @property get configs(): ConfigurationInterface {
-        return this._configs;
-      }
-
-      constructor({
-        @inject(`Factory<${CONFIGURATION}>`) configurationFactory: () => ConfigurationInterface
-      }) {
-        super(... arguments)
-        this._configs = configurationFactory()
+        return this._configurationFactory();
       }
     }
     return Mixin;
