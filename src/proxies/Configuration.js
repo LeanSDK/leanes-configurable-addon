@@ -33,6 +33,8 @@ export default (Module) => {
     @nameBy static  __filename = __filename;
     @meta static object = {};
 
+    @property _configI = 'ConfigurationInterface';
+
     @property get root(): string {
       return this.getData() || '.';
     }

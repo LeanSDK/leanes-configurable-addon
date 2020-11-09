@@ -16,6 +16,13 @@
 export type { ConfigurationInterface } from './interfaces/ConfigurationInterface';
 export type { ConfigurableInterface } from './interfaces/ConfigurableInterface';
 
+import ConfigurationTF from './proxies/Configuration';
+
+import ConfigurableMixinTF from './mixins/ConfigurableMixin';
+import MemoryConfigurationMixinTF from './mixins/MemoryConfigurationMixin';
+
+import FacadePatchTF from './patches/FacadePatch';
+
 export default (Module) => {
   const {
     Module: BaseModule,
@@ -34,15 +41,11 @@ export default (Module) => {
       }
     }
 
-    import ConfigurationTF from './proxies/Configuration';
     ConfigurationTF(Mixin);
 
-    import ConfigurableMixinTF from './mixins/ConfigurableMixin';
     ConfigurableMixinTF(Mixin);
-    import MemoryConfigurationMixinTF from './mixins/MemoryConfigurationMixin';
     MemoryConfigurationMixinTF(Mixin);
 
-    import FacadePatchTF from './patches/FacadePatch';
     FacadePatchTF(Mixin);
 
     return Mixin;

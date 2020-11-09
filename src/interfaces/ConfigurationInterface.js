@@ -14,6 +14,8 @@
 // along with leanes-configurable-addon.  If not, see <https://www.gnu.org/licenses/>.
 
 export interface ConfigurationInterface {
+  _configI: 'ConfigurationInterface';
+
   root: string;
 
   environment: string;
