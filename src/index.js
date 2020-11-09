@@ -33,12 +33,17 @@ export default (Module) => {
         patch(this.NS.FacadePatch)(this.NS.Facade);
       }
     }
-    require('./proxies/Configuration').default(Mixin);
 
-    require('./mixins/ConfigurableMixin').default(Mixin);
-    require('./mixins/MemoryConfigurationMixin').default(Mixin);
+    import ConfigurationTF from './proxies/Configuration';
+    ConfigurationTF(Mixin);
 
-    require('./patches/FacadePatch').default(Mixin);
+    import ConfigurableMixinTF from './mixins/ConfigurableMixin';
+    ConfigurableMixinTF(Mixin);
+    import MemoryConfigurationMixinTF from './mixins/MemoryConfigurationMixin';
+    MemoryConfigurationMixinTF(Mixin);
+
+    import FacadePatchTF from './patches/FacadePatch';
+    FacadePatchTF(Mixin);
 
     return Mixin;
   }]
