@@ -29,6 +29,16 @@ export default (Module) => {
         super.initializeFacade(... arguments)
         this.addProxy(CONFIGURATION, 'Configuration', this.Module.NS.ROOT)
       }
+
+      @method async remove(): Promise<void> {
+        await super.remove(... arguments)
+        if (this.container.isBound(`Factory<${CONFIGURATION}>`)) {
+          this.container.unbind(`Factory<${CONFIGURATION}>`)
+        }
+        if (this.container.isBound(CONFIGURATION)) {
+          this.container.unbind(CONFIGURATION)
+        }
+      }
     }
     return Patch;
   });
