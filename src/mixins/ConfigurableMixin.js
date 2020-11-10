@@ -33,9 +33,9 @@ export default (Module) => {
       @property _configurableInterface = 'ConfigurableInterface'
 
       @inject(`Factory<${CONFIGURATION}>`)
-      @property _configurationFactory: <T = ConfigurationInterface>() => $Rest<T, {_configI: $PropertyType<T, '_configI'>}>;
+      @property _configurationFactory: <T: ConfigurationInterface>() => {'_configI': $ElementType<T, '_configI'>};
 
-      @property get configs <T = ConfigurationInterface>(): $Rest<T, {_configI: $PropertyType<T, '_configI'>}> {
+      @property get configs <T: ConfigurationInterface>(): {'_configI': $ElementType<T, '_configI'>} {
         return this._configurationFactory();
       }
     }
