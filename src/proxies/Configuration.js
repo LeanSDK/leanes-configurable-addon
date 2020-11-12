@@ -26,7 +26,6 @@ export default (Module) => {
     Utils: { _, assign }
   } = Module.NS;
 
-
   @initialize
   @partOf(Module)
   class Configuration extends Proxy implements ConfigurationInterface {

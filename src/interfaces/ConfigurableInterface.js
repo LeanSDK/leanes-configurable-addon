@@ -14,5 +14,5 @@
 // along with leanes-configurable-addon.  If not, see <https://www.gnu.org/licenses/>.
 
 export interface ConfigurableInterface {
-  _configurableInterface: 'ConfigurableInterface';
+  _configurableI: 'ConfigurableInterface';
 }

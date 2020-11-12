@@ -2,7 +2,8 @@ const { expect, assert } = require('chai');
 const sinon = require('sinon');
 const _ = require('lodash');
 const ConfigurableAddon = require("../../src/index.js").default;
-const LeanES = require('@leansdk/leanes/src/leanes').default;
+const LeanES = require('@leansdk/leanes/src').default;
+
 const {
   initialize, partOf, nameBy, meta, method, property, mixin, plugin, attribute, constant
 } = LeanES.NS;

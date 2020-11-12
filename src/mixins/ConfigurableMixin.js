@@ -16,13 +16,11 @@
 import type { ConfigurationInterface } from '../interfaces/ConfigurationInterface';
 import type { ConfigurableInterface } from '../interfaces/ConfigurableInterface';
 
-import { inject } from 'inversify';
-
 export default (Module) => {
   const {
     CONFIGURATION,
     CoreObject,
-    initializeMixin, meta, property,
+    initializeMixin, meta, property, inject,
   } = Module.NS;
 
   Module.defineMixin(__filename, (BaseClass: Class<CoreObject>) => {
@@ -30,12 +28,12 @@ export default (Module) => {
     class Mixin extends BaseClass implements ConfigurableInterface {
       @meta static object = {};
 
-      @property _configurableInterface = 'ConfigurableInterface'
+      @property _configurableI = 'ConfigurableInterface'
 
       @inject(`Factory<${CONFIGURATION}>`)
-      @property _configurationFactory: <T: ConfigurationInterface>() => {'_configI': $ElementType<T, '_configI'>};
+      @property _configurationFactory: <T = ConfigurationInterface>() => {'_configI': $PropertyType<T, '_configI'>};
 
-      @property get configs <T: ConfigurationInterface>(): {'_configI': $ElementType<T, '_configI'>} {
+      @property get configs <T = ConfigurationInterface>(): {'_configI': $PropertyType<T, '_configI'>} {
         return this._configurationFactory();
       }
     }

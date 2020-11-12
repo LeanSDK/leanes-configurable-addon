@@ -16,9 +16,9 @@ const extensions = [".ts", ".js"];
 // Compile JS through rollup
 let js = new Rollup(appRoot, {
   inputFiles: ["**/*.js"],
-  annotation: "JS Transformation",
+  annotation: "leanes-configurable-addon",
   rollup: {
-    input: __dirname + "/src/leanes/index.js",
+    input: __dirname + "/src/index.js",
     external: [
       'crypto',
       'net',
@@ -75,11 +75,11 @@ let js = new Rollup(appRoot, {
         dirname: true,
         filename: true,
         global: false,
-        baseDir: process.cwd() + "/src/leanes/"
+        baseDir: process.cwd() + "/src/"
       }),
     ],
     output: {
-      name: "LeanES",
+      name: "leanes-configurable-addon",
       dir: __dirname + '/lib',
       format: "cjs",
       sourcemap: true,
