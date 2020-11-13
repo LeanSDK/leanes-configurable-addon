@@ -59,7 +59,7 @@ const js = new Rollup(appRoot, {
         ],
         plugins: [
           "@babel/plugin-syntax-flow",
-          "flow-runtime",
+          // "flow-runtime",
           "@babel/plugin-transform-flow-strip-types",
           ["@babel/plugin-proposal-decorators", { "legacy": true }],
           ["@babel/plugin-proposal-class-properties", { "loose": true }],
