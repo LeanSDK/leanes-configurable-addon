@@ -1,5 +1,6 @@
 const { expect, assert } = require('chai');
-const ConfigurableAddon = require("../../src/index.js").default;
+const path = process.env.ENV === 'build' ? "../../lib/index.dev" : "../../src/index.js";
+const ConfigurableAddon = require(path).default;
 const LeanES = require('@leansdk/leanes/src').default;
 const {
   initialize, partOf, nameBy, meta, constant, mixin, plugin
@@ -24,7 +25,7 @@ describe('Configuration', () => {
       // }
 
       const configuration = Test.NS.Configuration.new();
-      configuration.setName(LeanES.NS.CONFIGURATION);
+      configuration.setName(Test.NS.CONFIGURATION);
       configuration.setData(Test.NS.ROOT);
       const environment = configuration.environment;
       assert.isTrue(environment != null, 'configuration.environment isnt exist');
@@ -48,7 +49,7 @@ describe('Configuration', () => {
       //   @meta static object = {};
       // }
       const configuration = Test.NS.Configuration.new();
-      configuration.setName(LeanES.NS.CONFIGURATION);
+      configuration.setName(Test.NS.CONFIGURATION);
       configuration.setData(Test.NS.ROOT);
       configuration.defineConfigProperties();
       assert.propertyVal(configuration, 'test1', 'default');
@@ -74,7 +75,7 @@ describe('Configuration', () => {
       //   @meta static object = {};
       // }
       const configuration = Test.NS.Configuration.new();
-      configuration.setName(LeanES.NS.CONFIGURATION);
+      configuration.setName(Test.NS.CONFIGURATION);
       configuration.setData(Test.NS.ROOT);
       configuration.onRegister();
       assert.propertyVal(configuration, 'test1', 'default');

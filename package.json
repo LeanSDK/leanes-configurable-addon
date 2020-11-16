@@ -2,12 +2,13 @@
   "name": "@leansdk/leanes-configurable-addon",
   "version": "7.0.0",
   "description": "LeanES addon for define and use configuration",
-  "main": "lib/index.js",
+  "main": "lib/index.min.js",
   "license": "LGPL-3.0",
   "scripts": {
-    "build": "broccoli build",
+    "build": "broccoli build --dev; broccoli build --prod",
     "serve": "broccoli serve",
-    "test": "mocha"
+    "test": "mocha",
+    "test_build": "ENV=build mocha"
   },
   "repository": {
     "type": "git",
@@ -28,7 +29,7 @@
     "leanes-addon"
   ],
   "devDependencies": {
-    "@leansdk/leanes": "https://github.com/LeanSDK/leanes.git#develop",
+    "@leansdk/leanes": "https://github.com/LeanSDK/leanes.git#feature/building_improveds",
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.9.6",
     "@babel/plugin-proposal-class-properties": "^7.8.3",
@@ -58,6 +59,7 @@
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-globals": "1.4.0",
     "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-terser": "^7.0.2",
     "sinon": "9.0.3",
     "sinon-chai": "3.5.0"
   },

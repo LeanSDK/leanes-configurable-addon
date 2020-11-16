@@ -1,7 +1,8 @@
 const { expect, assert } = require('chai');
 const sinon = require('sinon');
 const _ = require('lodash');
-const ConfigurableAddon = require("../../src/index.js").default;
+const path = process.env.ENV === 'build' ? "../../lib/index.dev" : "../../src/index.js";
+const ConfigurableAddon = require(path).default;
 const LeanES = require('@leansdk/leanes/src').default;
 
 const {
