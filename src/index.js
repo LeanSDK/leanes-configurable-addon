@@ -29,6 +29,13 @@ export default (Module) => {
   } = Module.NS;
 
   return ['ConfigurableAddon', (BaseClass) => {
+    @FacadePatchTF
+
+    @MemoryConfigurationMixinTF
+    @ConfigurableMixinTF
+
+    @ConfigurationTF
+
     @initializeMixin
     class Mixin extends BaseClass {
       @meta static object = {};
@@ -39,14 +46,6 @@ export default (Module) => {
         patch(this.NS.FacadePatch)(this.NS.Facade);
       }
     }
-
-    ConfigurationTF(Mixin);
-
-    ConfigurableMixinTF(Mixin);
-    MemoryConfigurationMixinTF(Mixin);
-
-    FacadePatchTF(Mixin);
-
     return Mixin;
   }]
 }
