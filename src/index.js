@@ -25,11 +25,10 @@ import FacadePatchTF from './patches/FacadePatch';
 
 export default (Module) => {
   const {
-    Module: BaseModule,
     initializeMixin, meta, constant, method, patch
   } = Module.NS;
 
-  return ['ConfigurableAddon', (BaseClass: Class<BaseModule>) => {
+  return ['ConfigurableAddon', (BaseClass) => {
     @initializeMixin
     class Mixin extends BaseClass {
       @meta static object = {};

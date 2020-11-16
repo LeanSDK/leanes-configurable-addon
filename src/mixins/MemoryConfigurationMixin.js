@@ -17,13 +17,12 @@ const hasProp = {}.hasOwnProperty;
 
 export default (Module) => {
   const {
-    Configuration,
     assert,
     initializeMixin, meta, property, method,
     Utils: { _, assign }
   } = Module.NS;
 
-  Module.defineMixin(__filename, (BaseClass: Class<Configuration>) => {
+  Module.defineMixin(__filename, (BaseClass) => {
     @initializeMixin
     class Mixin extends BaseClass {
       @meta static object = {};

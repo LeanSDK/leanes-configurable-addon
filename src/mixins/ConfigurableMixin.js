@@ -19,11 +19,10 @@ import type { ConfigurableInterface } from '../interfaces/ConfigurableInterface'
 export default (Module) => {
   const {
     CONFIGURATION,
-    CoreObject,
     initializeMixin, meta, property, inject,
   } = Module.NS;
 
-  Module.defineMixin(__filename, (BaseClass: Class<CoreObject>) => {
+  Module.defineMixin(__filename, (BaseClass) => {
     @initializeMixin
     class Mixin extends BaseClass implements ConfigurableInterface {
       @meta static object = {};
