@@ -16,12 +16,12 @@
 export type { ConfigurationInterface } from './interfaces/ConfigurationInterface';
 export type { ConfigurableInterface } from './interfaces/ConfigurableInterface';
 
-import ConfigurationTF from './proxies/Configuration';
+import Configuration from './proxies/Configuration';
 
-import ConfigurableMixinTF from './mixins/ConfigurableMixin';
-import MemoryConfigurationMixinTF from './mixins/MemoryConfigurationMixin';
+import ConfigurableMixin from './mixins/ConfigurableMixin';
+import MemoryConfigurationMixin from './mixins/MemoryConfigurationMixin';
 
-import FacadePatchTF from './patches/FacadePatch';
+import FacadePatch from './patches/FacadePatch';
 
 export default (Module) => {
   const {
@@ -29,12 +29,12 @@ export default (Module) => {
   } = Module.NS;
 
   return ['ConfigurableAddon', (BaseClass) => {
-    @FacadePatchTF
+    @FacadePatch
 
-    @MemoryConfigurationMixinTF
-    @ConfigurableMixinTF
+    @MemoryConfigurationMixin
+    @ConfigurableMixin
 
-    @ConfigurationTF
+    @Configuration
 
     @initializeMixin
     class Mixin extends BaseClass {
