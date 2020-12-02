@@ -21,15 +21,17 @@ import Configuration from './proxies/Configuration';
 import ConfigurableMixin from './mixins/ConfigurableMixin';
 import MemoryConfigurationMixin from './mixins/MemoryConfigurationMixin';
 
-import FacadePatch from './patches/FacadePatch';
+import ConfigurableFacadeMixin from './mixins/ConfigurableFacadeMixin';
 
 export default (Module) => {
   const {
-    initializeMixin, meta, constant, method, patch
+    initializeMixin, meta, constant, extend
   } = Module.NS;
 
   return ['ConfigurableAddon', (BaseClass) => {
-    @FacadePatch
+    @extend('ConfigurableFacadeMixin', 'Facade')
+
+    @ConfigurableFacadeMixin
 
     @MemoryConfigurationMixin
     @ConfigurableMixin
@@ -41,10 +43,6 @@ export default (Module) => {
       @meta static object = {};
 
       @constant CONFIGURATION =  'ConfigurationProxy';
-
-      @method static including() {
-        patch(this.NS.FacadePatch)(this.NS.Facade);
-      }
     }
     return Mixin;
   }]
