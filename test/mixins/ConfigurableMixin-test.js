@@ -25,9 +25,14 @@ describe('ConfigurableMixin', () => {
 
       @initialize
       @partOf(Test)
-      class ApplicationFacade extends LeanES.NS.Facade {
+      class ApplicationFacade extends Test.NS.Facade {
         @nameBy static  __filename = 'ApplicationFacade';
         @meta static object = {};
+
+        @method initializeFacade(): void {
+          super.initializeFacade();
+          this.rebind('ApplicationModule').toConstructor(this.Module);
+        }
       }
 
       const facade = ApplicationFacade.getInstance(KEY);

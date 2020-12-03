@@ -118,9 +118,9 @@ export default (Module) => {
               assert(_.isInteger(config.default), `Default for '${attr}' must be integer`);
               break;
             case 'json':
-              assert(_.isString(config.default), `Default for '${attr}' must be JSON string`);
+              assert(_.isString(config.default) || _.isPlainObject(config.default), `Default for '${attr}' must be JSON string or js object`);
               try {
-                JSON.parse(config.default);
+                if (_.isString(config.default)) JSON.parse(config.default);
               } catch (error) {
                 assert.fail(`Default for '${attr}' is not valid JSON`);
               }
@@ -132,7 +132,7 @@ export default (Module) => {
             enumerable: true,
             configurable: true,
             writable: false,
-            value: config.type === 'json' ? JSON.parse(config.default) : config.default
+            value: config.type === 'json' && _.isString(config.default) ? JSON.parse(config.default) : config.default
           });
         })(key, value);
       }
