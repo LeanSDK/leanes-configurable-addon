@@ -78,7 +78,7 @@ export default (Module) => {
     }
 
     @property get manifestPath(): string {
-      return 'manifest.json';
+      return 'package.json';
     }
 
     @property get configPath(): string {
