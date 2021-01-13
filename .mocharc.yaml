@@ -1,0 +1,16 @@
+check-leaks: true
+color: true
+extension:
+  - 'js'
+file:
+  - './test/mixins/ConfigurableMixin-test.js'
+  - './test/mixins/MemoryConfigurationMixin-test.js'
+  - './test/proxy/Configuration-test.js'
+full-trace: true
+growl: true
+recursive: false
+reporter: 'spec'
+# require: '@babel/register'
+require: 'register-babel.js'
+# spec: 'test/**/**/*-test.js'
+watch: false
